@@ -2,7 +2,7 @@
 
 An evolving AI council that runs on your local hardware. Multiple AI models compete, get scored, mutate personalities, and the worst performers get replaced — survival of the fittest for LLMs.
 
-Inspired by [PewDiePie's AI council](https://www.youtube.com/watch?v=PLACEHOLDER), built to run on consumer GPUs with [Ollama](https://ollama.com).
+Inspired by [PewDiePie's AI council](https://youtu.be/qw4fDU18RcU?si=-3wwXFAerUUILheQ), built to run on consumer GPUs with [Ollama](https://ollama.com).
 
 ![The Council Web UI](screenshot.png)
 
@@ -77,12 +77,14 @@ ollama pull llama3.1:8b
 ### 4. Run
 
 **Web UI (recommended):**
+
 ```bash
 python council_web.py
 # Open http://localhost:5000
 ```
 
 **CLI:**
+
 ```bash
 python council.py
 ```
@@ -100,6 +102,7 @@ python council.py
 ### CLI Commands
 
 Interactive mode:
+
 ```
 /status      — show standings
 /add [name]  — spawn a new member
@@ -110,6 +113,7 @@ Interactive mode:
 ```
 
 CLI flags:
+
 ```bash
 python council.py --status       # Show standings
 python council.py --purge        # Kill lowest-ranked
@@ -150,17 +154,18 @@ To use multiple PCs:
 
 Set these on each PC for better performance:
 
-| Variable | Value | Effect |
-|---|---|---|
-| `OLLAMA_HOST` | `0.0.0.0` | Accept connections from network |
-| `OLLAMA_NUM_PARALLEL` | `2` | Handle 2 requests simultaneously |
-| `OLLAMA_FLASH_ATTENTION` | `1` | Reduce memory usage |
-| `OLLAMA_KV_CACHE_TYPE` | `q8_0` | Halve context cache memory |
-| `OLLAMA_KEEP_ALIVE` | `30m` | Keep models loaded longer |
+| Variable                 | Value     | Effect                           |
+| ------------------------ | --------- | -------------------------------- |
+| `OLLAMA_HOST`            | `0.0.0.0` | Accept connections from network  |
+| `OLLAMA_NUM_PARALLEL`    | `2`       | Handle 2 requests simultaneously |
+| `OLLAMA_FLASH_ATTENTION` | `1`       | Reduce memory usage              |
+| `OLLAMA_KV_CACHE_TYPE`   | `q8_0`    | Halve context cache memory       |
+| `OLLAMA_KEEP_ALIVE`      | `30m`     | Keep models loaded longer        |
 
 ## How Scoring Works
 
 Each round:
+
 1. All members answer the question in parallel
 2. The judge model scores each response from **-2** to **+3**
 3. Scores accumulate with a **0.95 decay** each round (past glory fades)
@@ -172,15 +177,15 @@ Each round:
 
 For **8GB VRAM** GPUs (RTX 3060 Ti, 3070, 3070 Ti, 4060 Ti):
 
-| Model | Size | Good For |
-|---|---|---|
-| `qwen2.5:7b-instruct` | ~4.5GB | Great all-rounder |
-| `mistral:7b-instruct` | ~4.1GB | Conversation |
-| `dolphin-mistral:7b` | ~4.1GB | Uncensored / no refusals |
-| `deepseek-r1:8b` | ~4.9GB | Reasoning |
-| `llama3.1:8b` | ~4.7GB | Solid baseline |
-| `phi4-mini` | ~2.2GB | Fast, surprisingly capable |
-| `qwen2.5:14b-instruct-q4_K_M` | ~8.0GB | Best quality (fills VRAM) |
+| Model                         | Size   | Good For                   |
+| ----------------------------- | ------ | -------------------------- |
+| `qwen2.5:7b-instruct`         | ~4.5GB | Great all-rounder          |
+| `mistral:7b-instruct`         | ~4.1GB | Conversation               |
+| `dolphin-mistral:7b`          | ~4.1GB | Uncensored / no refusals   |
+| `deepseek-r1:8b`              | ~4.9GB | Reasoning                  |
+| `llama3.1:8b`                 | ~4.7GB | Solid baseline             |
+| `phi4-mini`                   | ~2.2GB | Fast, surprisingly capable |
+| `qwen2.5:14b-instruct-q4_K_M` | ~8.0GB | Best quality (fills VRAM)  |
 
 ## Project Structure
 
