@@ -40,7 +40,7 @@ The result is a council that gets better over time through natural selection.
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/the-council.git
+https://github.com/SpeedRD/the-council.git
 cd the-council
 pip install -r requirements.txt
 ```
